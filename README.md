@@ -2,7 +2,7 @@
 
 ###[View Live hohoTT Blog &rarr;](http://hohott.github.io)
 
-![](http://huangxuan.me/img/blog-desktop.jpg)
+![](http://www.hohott.wang/img/install_message/run.png)
 
 
 ### "Page Build Warning" email
