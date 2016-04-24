@@ -98,4 +98,7 @@ Theme 的 CSS 是基于 Bootstrap 定制的，**看得不爽的地方直接在 L
 
 —— hohoTT 后记于 2016.04
 
+## 著作权声明
+本文首次发布于 [hohoTT Blog](http://www.hohott.wang/2016/04/20/hello-2016/)，转载请保留以上链接
+
 

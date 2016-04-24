@@ -1,0 +1,102 @@
+---
+layout:     post
+title:      "Eclemma的安装与简单使用教程"
+subtitle:   " \"eclipse中用于单元测试的插件\""
+date:       2016-04-23 14:00:00
+author:     "hohoTT"
+header-img: "img/post-bg-unix-linux.jpg"
+catalog: true
+tags:
+    - Java
+    - Eclipse
+    - Juint Test
+---
+
+## eclemma的安装与简单使用教程
+
+**EclEmma** 的简介:
+
+* 一个优秀的开源软件测试工具
+* eclipse的一个插件
+* 能够对由 Java 语言编写的程序进行覆盖测试
+* 能够在工作平台中启动
+* 直接对代码覆盖进行分析
+* 覆盖结果将立即被汇总并在Java源代码编辑器中高亮显示
+* 也可程序运行的结果生成详尽的覆盖测试报告
+* 可以结合JUnit使用
+* 工作原理：Class Instrumentation(把统计代码插入编译好的.class文件)
+
+
+## 安装
+
+有两种安装方法:
+
+1. 下载安装(推荐)
+
+[安装EclEmma插件地址](http://sourceforge.net/projects/eclemma/)
+
+下载完安装包之后，具体的操作步骤如下：
+
+`安装插件`
+
+启动eclipse---点击Help菜单---Install New Software，在弹出的对话框中，点击Add，之后点击 Archive，找到你下载好的 .zip 资源文件，一步一步的点击安装就好了，之后重新启动 **eclipse** 即可
+
+![](http://www.hohott.wang/img/writing_img/2016-4-23/add_repository.png)
+
+
+2. 在线安装
+
+[在线安装EclEmma插件地址](http://update.eclemma.org/)
+这种方法会比较慢推荐第一种方法的使用
+
+
+通过以上的两种方法即首先在 **eclipse** 中安装好 **EclEmma** 插件
+
+此时重启 **eclipse** 后会发现出现了用于测试的图标，使用规则如下方显示的为例：
+
+![](http://www.hohott.wang/img/writing_img/2016-4-23/testTool.png)
+
+
+## 具体的使用
+
+这里以加减乘除的四则运算为例进行测试的讲解：
+
+`首先以测试加法为例`
+
+<b>准备被测试的加法代码</b>
+![](http://www.hohott.wang/img/writing_img/2016-4-23/testAdd1.png)
+
+<b>测试加法代码的代码</b>
+![](http://www.hohott.wang/img/writing_img/2016-4-23/testAdd2.png)
+
+<b>测试的代码覆盖率情况</b>
+![](http://www.hohott.wang/img/writing_img/2016-4-23/testAddResult.png)
+
+以为测试部分需要测试加减乘除四个方法，此时只测试了其中的一个方法，则此时的测试覆盖率不为100%
+
+`之后对所有的方法进行测试`
+
+<b>需要被测试的四个方法的代码</b>
+
+![](http://www.hohott.wang/img/writing_img/2016-4-23/test.png)
+
+<b>需要测试四个方法的代码</b>
+
+![](http://www.hohott.wang/img/writing_img/2016-4-23/test2.png)
+
+<b>测试的代码覆盖率情况</b>
+
+![](http://www.hohott.wang/img/writing_img/2016-4-23/successRult.png)
+
+则此时测试的代码覆盖率达到100%
+
+## 单元测试的结果分析
+
+* 红色代表未执行
+
+* 黄色代表条件没有全部执行
+
+* 绿色代表执行过了
+
+## 著作权声明
+本文首次发布于 [hohoTT Blog](http://www.hohott.wang/2016/04/23/JuitTest/)，转载请保留以上链接
