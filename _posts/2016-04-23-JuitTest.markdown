@@ -31,7 +31,7 @@ tags:
 
 有两种安装方法:
 
-1. 下载安装(推荐)
+一、 下载安装(推荐)
 
 [安装EclEmma插件地址](http://sourceforge.net/projects/eclemma/)
 
@@ -44,7 +44,7 @@ tags:
 ![](http://www.hohott.wang/img/writing_img/2016-4-23/add_repository.png)
 
 
-2. 在线安装
+二、 在线安装
 
 [在线安装EclEmma插件地址](http://update.eclemma.org/)
 这种方法会比较慢推荐第一种方法的使用
