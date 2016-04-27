@@ -133,50 +133,50 @@ http://www.springframework.org/schema/aop http://www.springframework.org/schema/
 http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd
 http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.0.xsd">
 
-<!-- 导入资源文件 -->
-<context:property-placeholder location="classpath:db.properties" />
+	<!-- 导入资源文件 -->
+	<context:property-placeholder location="classpath:db.properties" />
 
-<!-- 配置 C3P0 数据源 -->
-<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
-	<property name="user" value="${jdbc.user}"></property>
-	<property name="password" value="${jdbc.password}"></property>
-	<property name="driverClass" value="${jdbc.driverClass}"></property>
-	<property name="jdbcUrl" value="${jdbc.jdbcUrl}"></property>
+	<!-- 配置 C3P0 数据源 -->
+	<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
+		<property name="user" value="${jdbc.user}"></property>
+		<property name="password" value="${jdbc.password}"></property>
+		<property name="driverClass" value="${jdbc.driverClass}"></property>
+		<property name="jdbcUrl" value="${jdbc.jdbcUrl}"></property>
 
-	<property name="initialPoolSize" value="${jdbc.initPoolSize}"></property>
-	<property name="maxPoolSize" value="${jdbc.maxPoolSize}"></property>
-</bean>
+		<property name="initialPoolSize" value="${jdbc.initPoolSize}"></property>
+		<property name="maxPoolSize" value="${jdbc.maxPoolSize}"></property>
+	</bean>
 
-<!-- 配置 SessionFactory -->
-<bean id="sessionFactory"
-	class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
-	<property name="dataSource" ref="dataSource"></property>
-	<property name="configLocation" value="classpath:hibernate.cfg.xml"></property>
-	<property name="mappingLocations" value="classpath:com/wt/entity/*.hbm.xml"></property>
-</bean>
+	<!-- 配置 SessionFactory -->
+	<bean id="sessionFactory"
+		class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+		<property name="dataSource" ref="dataSource"></property>
+		<property name="configLocation" value="classpath:hibernate.cfg.xml"></property>
+		<property name="mappingLocations" value="classpath:com/wt/entity/*.hbm.xml"></property>
+	</bean>
 
-<!-- 配置 Spring 的声明式事务 -->
-<!-- 1. 配置 hibernate 的事务管理器 -->
-<bean id="transactionManager"
-	class="org.springframework.orm.hibernate4.HibernateTransactionManager">
-	<property name="sessionFactory" ref="sessionFactory"></property>
-</bean>
+	<!-- 配置 Spring 的声明式事务 -->
+	<!-- 1. 配置 hibernate 的事务管理器 -->
+	<bean id="transactionManager"
+		class="org.springframework.orm.hibernate4.HibernateTransactionManager">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
 
-<!-- 2. 配置事务属性 -->
-<tx:advice id="txAdvice" transaction-manager="transactionManager">
-	<tx:attributes>
-		<tx:method name="get*" read-only="true" />
-		<tx:method name="lastNameIsValid" read-only="true" />
-		<tx:method name="*" />
-	</tx:attributes>
-</tx:advice>
+	<!-- 2. 配置事务属性 -->
+	<tx:advice id="txAdvice" transaction-manager="transactionManager">
+		<tx:attributes>
+			<tx:method name="get*" read-only="true" />
+			<tx:method name="lastNameIsValid" read-only="true" />
+			<tx:method name="*" />
+		</tx:attributes>
+	</tx:advice>
 
-<!-- 3. 配置事务切入点, 再把事务属性和事务切入点关联起来 -->
-<aop:config>
-	<aop:pointcut expression="execution(* com.wt.service.*.*(..))"
-		id="txPointcut" />
-	<aop:advisor advice-ref="txAdvice" pointcut-ref="txPointcut" />
-</aop:config>
+	<!-- 3. 配置事务切入点, 再把事务属性和事务切入点关联起来 -->
+	<aop:config>
+		<aop:pointcut expression="execution(* com.wt.service.*.*(..))"
+			id="txPointcut" />
+		<aop:advisor advice-ref="txAdvice" pointcut-ref="txPointcut" />
+	</aop:config>
 
 </beans>
 ```
@@ -213,7 +213,7 @@ http://www.springframework.org/schema/tx http://www.springframework.org/schema/t
 
  - 建立 **持久化类**
 
-```Java
+```java
 package com.wt.entity;
 
 public class User {
