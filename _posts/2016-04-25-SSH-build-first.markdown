@@ -83,30 +83,32 @@ tags:
 
  - 配置 **web.xml** 文件, 即为 **Spring** 在项目 `服务器容器` 中进行声明
 
-```Java
+```java
 <context-param>
-		<param-name>contextConfigLocation</param-name>
-		<param-value>classpath:applicationContext*.xml</param-value>
-	</context-param>
+	<param-name>contextConfigLocation</param-name>
+	<param-value>classpath:applicationContext*.xml</param-value>
+</context-param>
 
-	<listener>
-		<listener-class>
-		    org.springframework.web.context.ContextLoaderListener
-		</listener-class>
-	</listener>
+<listener>
+	<listener-class>
+		org.springframework.web.context.ContextLoaderListener
+	</listener-class>
+</listener>
 ```
 
  - 在 **conf** 目录下创建 **db.properties** 文件，配置 **C3P0 数据源** 部分
- ```Java
-    jdbc.user=... //(你自己的用户名)
-    jdbc.password=...//(你自己的用户名密码)
-    jdbc.driverClass=com.mysql.jdbc.Driver
-    jdbc.jdbcUrl=jdbc:mysql://localhost:3306/Logistics
 
-    jdbc.initPoolSize=5
-    jdbc.maxPoolSize=10
-    #...
- ```
+```java
+jdbc.user=... //(你自己的用户名)
+jdbc.password=...//(你自己的用户名密码)
+jdbc.driverClass=com.mysql.jdbc.Driver
+jdbc.jdbcUrl=jdbc:mysql://localhost:3306/Logistics
+
+jdbc.initPoolSize=5
+jdbc.maxPoolSize=10
+#...
+```
+
  - 创建 **Spring** 的配置文件
  <div align="center"><img src="http://www.hohott.wang/img/writing_img/2016-4-25/spring1.png"/></div>
 
@@ -121,60 +123,60 @@ tags:
     - 如果只需要达到项目运行只 `创建数据库表` 的情况，只需要配置 **SessionFactory** 即可达到目的
     - 声明式事务的配置在实现对数据表具体操作时用到，该项目实现的查询数据库表的功能
 
-```Java
+```java
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
-	xmlns:context="http://www.springframework.org/schema/context" xmlns:tx="http://www.springframework.org/schema/tx"
-	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
-		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.0.xsd
-		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd
-		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.0.xsd">
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+xmlns:context="http://www.springframework.org/schema/context" xmlns:tx="http://www.springframework.org/schema/tx"
+xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.0.xsd
+http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd
+http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.0.xsd">
 
-	<!-- 导入资源文件 -->
-	<context:property-placeholder location="classpath:db.properties" />
+<!-- 导入资源文件 -->
+<context:property-placeholder location="classpath:db.properties" />
 
-	<!-- 配置 C3P0 数据源 -->
-	<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
-		<property name="user" value="${jdbc.user}"></property>
-		<property name="password" value="${jdbc.password}"></property>
-		<property name="driverClass" value="${jdbc.driverClass}"></property>
-		<property name="jdbcUrl" value="${jdbc.jdbcUrl}"></property>
+<!-- 配置 C3P0 数据源 -->
+<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
+	<property name="user" value="${jdbc.user}"></property>
+	<property name="password" value="${jdbc.password}"></property>
+	<property name="driverClass" value="${jdbc.driverClass}"></property>
+	<property name="jdbcUrl" value="${jdbc.jdbcUrl}"></property>
 
-		<property name="initialPoolSize" value="${jdbc.initPoolSize}"></property>
-		<property name="maxPoolSize" value="${jdbc.maxPoolSize}"></property>
-	</bean>
+	<property name="initialPoolSize" value="${jdbc.initPoolSize}"></property>
+	<property name="maxPoolSize" value="${jdbc.maxPoolSize}"></property>
+</bean>
 
-	<!-- 配置 SessionFactory -->
-	<bean id="sessionFactory"
-		class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
-		<property name="dataSource" ref="dataSource"></property>
-		<property name="configLocation" value="classpath:hibernate.cfg.xml"></property>
-		<property name="mappingLocations" value="classpath:com/wt/entity/*.hbm.xml"></property>
-	</bean>
+<!-- 配置 SessionFactory -->
+<bean id="sessionFactory"
+	class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+	<property name="dataSource" ref="dataSource"></property>
+	<property name="configLocation" value="classpath:hibernate.cfg.xml"></property>
+	<property name="mappingLocations" value="classpath:com/wt/entity/*.hbm.xml"></property>
+</bean>
 
-	<!-- 配置 Spring 的声明式事务 -->
-	<!-- 1. 配置 hibernate 的事务管理器 -->
-	<bean id="transactionManager"
-		class="org.springframework.orm.hibernate4.HibernateTransactionManager">
-		<property name="sessionFactory" ref="sessionFactory"></property>
-	</bean>
+<!-- 配置 Spring 的声明式事务 -->
+<!-- 1. 配置 hibernate 的事务管理器 -->
+<bean id="transactionManager"
+	class="org.springframework.orm.hibernate4.HibernateTransactionManager">
+	<property name="sessionFactory" ref="sessionFactory"></property>
+</bean>
 
-	<!-- 2. 配置事务属性 -->
-	<tx:advice id="txAdvice" transaction-manager="transactionManager">
-		<tx:attributes>
-			<tx:method name="get*" read-only="true" />
-			<tx:method name="lastNameIsValid" read-only="true" />
-			<tx:method name="*" />
-		</tx:attributes>
-	</tx:advice>
+<!-- 2. 配置事务属性 -->
+<tx:advice id="txAdvice" transaction-manager="transactionManager">
+	<tx:attributes>
+		<tx:method name="get*" read-only="true" />
+		<tx:method name="lastNameIsValid" read-only="true" />
+		<tx:method name="*" />
+	</tx:attributes>
+</tx:advice>
 
-	<!-- 3. 配置事务切入点, 再把事务属性和事务切入点关联起来 -->
-	<aop:config>
-		<aop:pointcut expression="execution(* com.wt.service.*.*(..))"
-			id="txPointcut" />
-		<aop:advisor advice-ref="txAdvice" pointcut-ref="txPointcut" />
-	</aop:config>
+<!-- 3. 配置事务切入点, 再把事务属性和事务切入点关联起来 -->
+<aop:config>
+	<aop:pointcut expression="execution(* com.wt.service.*.*(..))"
+		id="txPointcut" />
+	<aop:advisor advice-ref="txAdvice" pointcut-ref="txPointcut" />
+</aop:config>
 
 </beans>
 ```
@@ -183,7 +185,7 @@ tags:
 
  - 创建 **Hibernate** 的配置文件
 
-```Java
+```java
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE hibernate-configuration PUBLIC
 		"-//Hibernate/Hibernate Configuration DTD 3.0//EN"
@@ -208,62 +210,63 @@ tags:
     </session-factory>
 </hibernate-configuration>
 ```
+
  - 建立 **持久化类**
 
- ```Java
-    package com.wt.entity;
+```Java
+package com.wt.entity;
 
-    public class User {
-        private Integer user_id;
-		private String user_name;
-		private String user_password;
+public class User {
+	private Integer user_id;
+	private String user_name;
+	private String user_password;
 
-	public Integer getUser_id() {
-		return user_id;
-	}
+public Integer getUser_id() {
+	return user_id;
+}
 
-	public void setUser_id(Integer user_id) {
-		this.user_id = user_id;
-	}
+public void setUser_id(Integer user_id) {
+	this.user_id = user_id;
+}
 
-	public String getUser_name() {
-		return user_name;
-	}
+public String getUser_name() {
+	return user_name;
+}
 
-	public void setUser_name(String user_name) {
-		this.user_name = user_name;
-	}
+public void setUser_name(String user_name) {
+	this.user_name = user_name;
+}
 
-	public String getUser_password() {
-		return user_password;
-	}
+public String getUser_password() {
+	return user_password;
+}
 
-	public void setUser_password(String user_password) {
-		this.user_password = user_password;
-	}
+public void setUser_password(String user_password) {
+	this.user_password = user_password;
+}
 
-	public User(Integer user_id, String user_name, String user_password) {
-		super();
-		this.user_id = user_id;
-		this.user_name = user_name;
-		this.user_password = user_password;
-	}
+public User(Integer user_id, String user_name, String user_password) {
+	super();
+	this.user_id = user_id;
+	this.user_name = user_name;
+	this.user_password = user_password;
+}
 
-	public User() {
-		// TODO Auto-generated constructor stub
-	}
+public User() {
+	// TODO Auto-generated constructor stub
+}
 
-	@Override
-	public String toString() {
-		return "User [user_id=" + user_id + ", user_name=" + user_name
-				+ ", user_password=" + user_password + "]";
-	}
-    }
- ```
+@Override
+public String toString() {
+	return "User [user_id=" + user_id + ", user_name=" + user_name
+			+ ", user_password=" + user_password + "]";
+}
+}
+```
 
  - 对应的 **.hbm.xml** 文件
 
-```Java
+```java
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
