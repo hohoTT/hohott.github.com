@@ -28,7 +28,7 @@ context.Response.StatusCode = 400;
 
 ## 代码实现
 
-#### 验证处理类
+#### 一、 验证处理类
 
  - 首先创建 `后端` **验证处理类**
 
@@ -99,7 +99,7 @@ public class UserValidate extends ActionSupport{
 
 关于 **usernameCheck** 以及 **emailCheck ** 两个方法，就是你通过 **hql** 语句进行 `数据库检查` 的操作方法，这里不做过多说明。
 
-#### 声明验证处理类
+#### 二、 声明验证处理类
 
  - 在 **applicationContext-beans.xml** 配置文件中进行 **验证处理类** 的 `声明` ,以下为声明代码
  
@@ -110,7 +110,7 @@ public class UserValidate extends ActionSupport{
 </bean>
 ```
 
-#### Struts.xml 配置文件
+#### 三、 Struts.xml 配置文件
 
  - 最重要的一步，在 **Struts.xml 配置文件** 中对 `后端` 处理结果的 **状态码映射**，从而返回给 `前端` 正确的状态码，进而做出 `前端` 的消息显示
 
