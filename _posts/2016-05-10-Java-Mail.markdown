@@ -30,7 +30,8 @@ tags:
 
 #### AJAX前端验证技术
 当然前端还有我们的 **AJAX技术** 的验证，这个我之前的博文有涉及。
-具体的可以之前讲解的
+
+不明白的可以看下之前讲解的
 [AJAX技术之Struts2 中配置文件设置向前端返回的状态码](http://www.hohott.wang/2016/05/01/struts2-httpheader/)
 
 #### 效果图
@@ -469,6 +470,7 @@ public class Test {
 <div align="center"><img src="http://www.hohott.wang/img/writing_img/2016-5-10/result.png"/></div>
   
 按照我之前的所说的一步步做下来，就可以实现以上的效果了，是不是还挺不错的啊 : )
+
 快点试一试吧 : )
 
 ## 著作权声明
