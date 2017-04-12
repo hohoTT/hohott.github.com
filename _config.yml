@@ -87,5 +87,9 @@ friends: [
     {
         title: "前端外刊评论",
         href: "http://qianduan.guru/"
+    },
+    {
+        title: "云呼叫中心 - 天润融通",
+        href: "http://www.ti-net.com.cn/"
     }
 ]
