@@ -268,7 +268,7 @@ const app = new Vue({
 <div align="center"><img src="http://www.hohott.wang/img/writing_img/2017-4-20/r4.png"/></div>
 
 ## 著作权声明
-本文首次发布于 [hohoTT's Blog](http://www.hohott.wang/)，转载请保留 [http://www.hohott.wang/2017-04-20-Vue-Summary-Second/](http://www.hohott.wang/22017-04-20-Vue-Summary-Second/) 以上链接并附上作者 **hohoTT**。如果您喜欢，还可以关注我的微信公众号 **hohoTT** , 或者扫一扫下方的微信公众号二维码即可 ^_^。
+本文首次发布于 [hohoTT's Blog](http://www.hohott.wang/)，转载请保留 [http://www.hohott.wang/2017-04-20/Vue-Summary-Second/](http://www.hohott.wang/2017-04-20/Vue-Summary-Second/) 以上链接并附上作者 **hohoTT**。如果您喜欢，还可以关注我的微信公众号 **hohoTT** , 或者扫一扫下方的微信公众号二维码即可 ^_^。
 <div align="center"><img src="http://www.hohott.wang/img/WeiXinImg.jpg"/></div>
 
 
