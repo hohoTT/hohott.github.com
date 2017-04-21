@@ -2,7 +2,7 @@
 layout:     post
 title:      "Vue 前端 MVVM 框架使用教程（一）"
 subtitle:   " \"Vue + Webpack\""
-date:       2017-04-20 11:00:00
+date:       2017-04-19 11:00:00
 author:     "hohoTT"
 header-img: "img/writing_img/2017-4-21/post-bg.jpg"
 catalog: true
