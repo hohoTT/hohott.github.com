@@ -16,7 +16,7 @@ tags:
 
 ## 技术介绍
 
-### 什么是Vue
+#### 什么是Vue
 
 <div align="center"><img src="http://www.hohott.wang/img/writing_img/2017-4-21/s1.png"/></div>
 
@@ -24,7 +24,7 @@ tags:
 如果你是有经验的前端开发者，想知道 `Vue.js` 与其它库/框架的区别，查看对比其它框架。
 其他具体的内容可查看**Vue官方文档** [https://cn.vuejs.org/](https://cn.vuejs.org/)
 
-### Vue 特点
+#### Vue 特点
 - 数据绑定
 <div align="center"><img src="http://www.hohott.wang/img/writing_img/2017-4-21/s2.png"/></div>
 - 组件化
