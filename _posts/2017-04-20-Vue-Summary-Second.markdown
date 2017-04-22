@@ -16,7 +16,7 @@ tags:
 
 ## Vue 的组件使用
 
-### 创建一个组件
+#### 创建一个组件
 
 在工程目录`/src`下创建 `components` 文件夹，并在 `components` 文件夹下创建一个 `firstComponent.vue` 并写仿照 `App.vue` 的格式和前面学到的知识写一个组件。
 
@@ -46,7 +46,7 @@ tags:
 
 
 
-### 使用组件
+#### 使用组件
 
 
 在 `App.vue` 文件中使用组件 ( 因为在 `index.html` 里面定义了 `<div id="app"></div>` 所以就以这个组件作为主入口，方便 )
@@ -152,7 +152,7 @@ a {
 
 ## 使用路由搭建单页应用前期准备
 
-### 路由安装
+#### 路由安装
 
 路由的 **安装命令** 介绍
 安装 **路由依赖**
@@ -164,7 +164,7 @@ npm install vue-resource -D 这个命令是在 webpack.config.js 中加入别名
 
 <div align="center"><img src="http://www.hohott.wang/img/writing_img/2017-4-20/s1.png"/></div>
 
-### 问题解决
+#### 问题解决
 
 出现的问题可以有以下几点 **解决办法**：
 尝试使用 **国内镜像** 进行下载安装
@@ -180,7 +180,7 @@ cnpm install vue-resource -D
 
 ## 路由搭建使用以及界面呈现结果
 
-### 新建组件
+#### 新建组件
 按照之前介绍的新建 **第二个组件** `secondComponent.vue`
 
 ```html
@@ -206,7 +206,7 @@ cnpm install vue-resource -D
 </style>
 ```
 
-### 修改 main.js 文件
+#### 修改 main.js 文件
 修改 `main.js`，引入并注册 `vue-router`
 
 ```html
@@ -255,16 +255,16 @@ const app = new Vue({
 
 ## 界面效果图以及工程结构图
 
-### 首页
+#### 首页
 <div align="center"><img src="http://www.hohott.wang/img/writing_img/2017-4-20/r1.png"/></div>
 
-### first 组件
+#### first 组件
 <div align="center"><img src="http://www.hohott.wang/img/writing_img/2017-4-20/r2.png"/></div>
 
-### second 组件
+#### second 组件
 <div align="center"><img src="http://www.hohott.wang/img/writing_img/2017-4-20/r3.png"/></div>
 
-### 项目工程结构图
+#### 项目工程结构图
 <div align="center"><img src="http://www.hohott.wang/img/writing_img/2017-4-20/r4.png"/></div>
 
 ## 著作权声明
